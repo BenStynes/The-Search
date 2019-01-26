@@ -4,9 +4,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "Player.h"
-sf::Vector2f const m_GRAVITY = { 0,9.8 };
 #include "MainMenu.h"
 
+const sf::Vector2f  m_GRAVITY = { 0.0f,9.8f };
 
 class Game
 {

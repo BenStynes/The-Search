@@ -10,12 +10,14 @@ private:
 	sf::RectangleShape options[MAX_OPTIONS] ;
 	sf::Text menuText[MAX_OPTIONS];
 	sf::Text titleText;
-	sf::CircleShape Pointer;
-	bool existing;
-	bool optionsMenu;
-	bool newGame;
-	bool closeMenu;
-
+	sf::CircleShape optionSelector;
+	bool existing{true};
+	bool optionsMenu{false};
+	bool newGame{ false };
+	bool closeMenu{ false };
+	sf::Font overallText;
+	int optionCounterUp;
+	int optionCounterDown;
 
 public:
 	MainMenu();
@@ -26,7 +28,7 @@ public:
 	void advanceToNewGame();
 	void advanceToOptions();
 	void advanceToExitGame();
-
+	void movePointer();
 	void Draw(sf::RenderWindow & t_window);
 
 };

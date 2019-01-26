@@ -17,6 +17,7 @@ void Game::run()
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float FPS = 60.0f;
+	title.setupText();
 	title.setupOptionsAndPointers();
 	sf::Time timePerFrame = sf::seconds(1.0f / FPS); // 60 fps
 	while (m_window.isOpen())
@@ -35,9 +36,14 @@ void Game::run()
 
 void Game::processEvents()
 {
+
 	sf::Event nextEvent;
 	while (m_window.pollEvent(nextEvent))
 	{
+		title.movePointer();
+
+
+		
 		if (sf::Event::Closed == nextEvent.type) // check if the close window button is clicked on.
 		{
 			m_window.close();
@@ -60,11 +66,17 @@ void Game::processEvents()
 			prevoiusState.Space = false;
 			m_player.setPlayerSpeed({ 0,-50 });
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			title.advanceToNewGame();
+
+		}
 		if (m_player.getPosition().y >= 400)
 		{
 			m_player.setPosition({ m_player.getPosition().x, 400.0f });
 			currentState.Space = false;
 		}
+		
 	}
 }
 
@@ -81,8 +93,14 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear();
-	m_player.render(m_window);
-	title.Draw(m_window);
+	if (title.getExisting() == true)
+	{
+		title.Draw(m_window);
+	}
+	if (title.getExisting() == false)
+	{
+		m_player.render(m_window);
+	}
 	m_window.display();
 }
 
