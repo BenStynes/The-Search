@@ -6,7 +6,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
 {
-	gameTexture.loadFromFile("IMAGES/hell.png");
+	gameTexture.loadFromFile("IMAGES/BackGround.png");
 	gameScreen.setTexture(gameTexture);
 	gameScreen.setPosition({ 0,0 });
 }
@@ -64,6 +64,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+
+	m_enemy.update(m_player.getPosition());
 }
 
 void Game::render()
@@ -76,8 +78,8 @@ void Game::render()
 	}
 	else if (inGame)
 	{
-		m_player.render(m_window);
 		m_window.draw(gameScreen);
+		m_player.render(m_window);
 	}
 
 	m_window.display();

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "MainMenu.h"
+#include "Enemy.h"
 
 
 class Game
@@ -28,6 +29,8 @@ private:
 	bool inGame = false;
 
 	Player m_player;
+	Enemy m_enemy;
+
 	struct controlState
 	{
 		bool Left = false;

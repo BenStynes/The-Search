@@ -7,12 +7,17 @@ private:
 	int blood{};
 
 	sf::Vector2f position{600,400};
+	sf::Vector2f previousPos{ 600,400 };
 	bool attacked{false};
 	bool cutscene{false};
 	sf::Vector2f playerSpeed{0,0};
 	sf::Vector2f jumpSpeed{ 0,0 };
 	sf::Sprite player;
 	sf::Texture texture;
+	sf::IntRect textureBox;
+
+	bool currentState{ false };
+	bool previousState{ false };
 
 public:		
 	Player();
