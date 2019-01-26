@@ -14,7 +14,7 @@ private:
 	bool existing{true};
 	bool optionsMenu{false};
 	bool newGame{ false };
-	bool closeMenu{ false };
+	bool closeGame{ false };
 	sf::Font overallText;
 	int optionCounterUp;
 	int optionCounterDown;
@@ -24,10 +24,10 @@ public:
 	void setupText();
 	void setupOptionsAndPointers();
 	bool getExisting();
-	void setExisting(bool t_understandableHaveANiceDay);
+	void setExisting(bool t_showing);
 	void advanceToNewGame();
 	void advanceToOptions();
-	void advanceToExitGame();
+	void exitGame();
 	void movePointer();
 	void Draw(sf::RenderWindow & t_window);
 

@@ -13,10 +13,10 @@ void MainMenu::setupText()
 {
 	overallText.loadFromFile("polla.ttf");
 	titleText.setFont(overallText);
-	titleText.setFillColor(sf::Color::White);
-	titleText.setCharacterSize(56);
-	titleText.setPosition({ 200.0f, 150.0f });
-	titleText.setString("The Search My anal cavity");
+	titleText.setFillColor(sf::Color::Red);
+	titleText.setCharacterSize(76);
+	titleText.setPosition({ 350.0f, 150.0f });
+	titleText.setString("The Search");
 	for (int i = 0; i < MAX_OPTIONS; i++)
 	{
 		menuText[i].setFont(overallText);
@@ -36,7 +36,7 @@ void MainMenu::setupText()
 			break;
 		case 2:
 			menuText[i].setPosition({ 400.0f,600.0f });
-			menuText[i].setString("Kill Self");
+			menuText[i].setString("Exit Game");
 
 			break;
 		}
@@ -59,9 +59,9 @@ bool MainMenu::getExisting()
 	return existing;
 }
 
-void MainMenu::setExisting(bool t_understandableHaveANiceDay)
+void MainMenu::setExisting(bool t_showing)
 {
-	existing = t_understandableHaveANiceDay;
+	existing = t_showing;
 }
 
 void MainMenu::advanceToNewGame()
@@ -76,9 +76,9 @@ void MainMenu::advanceToOptions()
 	existing = false;
 }
 
-void MainMenu::advanceToExitGame()
+void MainMenu::exitGame()
 {
-	closeMenu = true;
+	closeGame = true;
 	existing = false;
 }
 void MainMenu::movePointer()
