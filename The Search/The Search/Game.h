@@ -3,19 +3,19 @@
 #define GAME
 // pete
 #include <SFML/Graphics.hpp>
-
+#include "MainMenu.h"
 
 class Game
 {
 public:
 
 	Game();
-	~Game();
-
+	~Game(); 
+	
 	void run();
-
+	
 private:
-
+	MainMenu title;
 	void processEvents();
 	void update(sf::Time t_deltaTime);
 	void render();
@@ -26,7 +26,7 @@ private:
 	bool m_exitGame;
 
 	sf::CircleShape m_circle;
-
+	
 };
 
 #endif // !GAME

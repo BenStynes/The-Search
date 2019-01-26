@@ -1,4 +1,6 @@
-#include "Game.h"
+
+#pragma once
+#include <SFML/Graphics.hpp>
 int const MAX_OPTIONS = 3;
 
 class MainMenu
@@ -10,9 +12,9 @@ private:
 	sf::Text titleText;
 	sf::CircleShape Pointer;
 	bool existing;
-	bool options;
+	bool optionsMenu;
 	bool newGame;
-	bool closeGame;
+	bool closeMenu;
 
 
 public:
@@ -24,6 +26,8 @@ public:
 	void advanceToNewGame();
 	void advanceToOptions();
 	void advanceToExitGame();
+
+	void Draw(sf::RenderWindow & t_window);
 
 };
 
