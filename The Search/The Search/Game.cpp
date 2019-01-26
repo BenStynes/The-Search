@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 Game::Game() :
 	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
@@ -15,7 +14,6 @@ Game::~Game()
 
 void Game::run()
 {
-	
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float FPS = 60.0f;
@@ -83,7 +81,6 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear();
-	
 	m_player.render(m_window);
 	title.Draw(m_window);
 	m_window.display();
