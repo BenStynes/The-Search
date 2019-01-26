@@ -3,7 +3,9 @@
 #define GAME
 
 #include <SFML/Graphics.hpp>
+#include "Player.h"
 
+sf::Vector2f const m_GRAVITY = { 0,9.8 };
 
 class Game
 {
@@ -20,13 +22,20 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 
-	void setupShapes();
-
 	sf::RenderWindow m_window;
 	bool m_exitGame;
 
-	sf::CircleShape m_circle;
+	Player m_player;
+	struct controlState
+	{
+		bool Left = false;
+		bool Right = false;
+		bool Space = false;
+		bool mouseClick = false;
+	};
 
+	controlState currentState;
+	controlState prevoiusState;
 };
 
 #endif // !GAME

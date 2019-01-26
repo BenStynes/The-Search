@@ -1,23 +1,27 @@
-#include "Game.h"
+#include "SFML/Graphics.hpp"
 
 class Player
 {
-
+private:
 	int health{};
 	int blood{};
-	sf::Vector2f postion{};
-	bool attacked{};
-	bool cutscene{};
-	int playerSpeed{};
-	sf::Sprite player{};
-	public:
-		
-		Player();
-		int getHealth();
-		void setHealth(int t_playerHealth);
-		void playerMovement();
-		int getPlayerSpeed();
-		void setPlayerSpeed(int t_playerSpeed);
+	sf::Vector2f position{600,400};
+	bool attacked{false};
+	bool cutscene{false};
+	sf::Vector2f playerSpeed{0,0};
+	sf::Sprite player;
+	sf::Texture texture;
+
+public:		
+	Player();
+	void update();
+	void render(sf::RenderWindow &t_window);
+	int getHealth();
+	void setHealth(int t_playerHealth);
+	sf::Vector2f getPlayerSpeed();
+	sf::Vector2f getPosition();
+	void setPosition(sf::Vector2f t_pos);
+	void setPlayerSpeed(sf::Vector2f t_playerSpeed);
 		
 
 

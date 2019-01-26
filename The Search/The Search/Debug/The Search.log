@@ -1,2 +1,7 @@
 ﻿  Game.cpp
-  The Search.vcxproj -> C:\Users\gameuser\Desktop\The Search\Debug\The Search.exe
+c:\users\gamejam\desktop\the-search\the search\the search\game.h(8): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  The Search.vcxproj -> C:\Users\gamejam\Desktop\The-Search\The Search\Debug\The Search.exe

@@ -5,11 +5,33 @@ Player::Player()
 
 	health = { 3 };
 	blood = { 0 };
-	postion = { };
+	position = {600,400};
     attacked = { false };
 	cutscene = { false };
 
+	texture.loadFromFile("IMAGES/Player.png");
+	player.setTexture(texture);
+	player.setPosition(position);
 
+
+}
+
+void Player::update()
+{
+	if (position.y <= 400)
+ 	{
+		position.y += playerSpeed.y;
+	}
+	if (position.x >= 0 || position.x <= 1200)
+	{
+		position.x += playerSpeed.x;
+	}
+	player.setPosition(position);
+}
+
+void Player::render(sf::RenderWindow & t_window)
+{
+	t_window.draw(player);
 }
 
 int Player::getHealth()
@@ -24,17 +46,22 @@ void Player::setHealth(int t_playerHealth)
 
 }
 
-void Player::playerMovement()
-{
-
-}
-
-int Player::getPlayerSpeed()
+sf::Vector2f Player::getPlayerSpeed()
 {
 	return playerSpeed ;
 }
 
-void Player::setPlayerSpeed(int t_playerSpeed)
+sf::Vector2f Player::getPosition()
+{
+	return position;
+}
+
+void Player::setPosition(sf::Vector2f t_pos)
+{
+	position = t_pos;
+}
+
+void Player::setPlayerSpeed(sf::Vector2f t_playerSpeed)
 {
 	playerSpeed = t_playerSpeed;
 }

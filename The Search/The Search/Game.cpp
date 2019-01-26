@@ -1,12 +1,9 @@
-
-
 #include "Game.h"
 
 Game::Game() :
-	m_window{ sf::VideoMode{ 800u, 600u, 32u }, "Basic Game" },
+	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
 {
-	setupShapes();
 }
 
 Game::~Game()
@@ -27,8 +24,8 @@ void Game::run()
 		if (timeSinceLastUpdate > timePerFrame)
 		{
 			timeSinceLastUpdate -= timePerFrame;
-			processEvents(); // Run at a minimum of 60 fps
 			update(timePerFrame); // 60 fps
+			processEvents(); // Run at a minimum of 60 fps
 		}
 		render(); // Run as many times as possible
 	}
@@ -43,11 +40,36 @@ void Game::processEvents()
 		{
 			m_window.close();
 		}
+		if (m_player.getPosition().y < 400)
+		{
+			m_player.setPlayerSpeed(m_GRAVITY);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			m_player.setPlayerSpeed({ -5,0 });
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			m_player.setPlayerSpeed({ 5,0 });
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !currentState.Space || prevoiusState.Space)
+		{
+			currentState.Space = true;
+			prevoiusState.Space = false;
+			m_player.setPlayerSpeed({ 0,-50 });
+		}
+		if (m_player.getPosition().y >= 400)
+		{
+			m_player.setPosition({ m_player.getPosition().x, 400.0f });
+			currentState.Space = false;
+		}
 	}
 }
 
 void Game::update(sf::Time t_deltaTime)
 {
+	m_player.update();
+
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -58,15 +80,8 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_window.draw(m_circle);
+	m_player.render(m_window);
 
 	m_window.display();
-}
-
-void Game::setupShapes()
-{
-	m_circle.setFillColor(sf::Color::Red);
-	m_circle.setRadius(30.0f);
-	m_circle.setPosition(400.0f, 300.0f);
 }
 
