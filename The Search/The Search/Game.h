@@ -1,7 +1,7 @@
 
 #ifndef GAME
 #define GAME
-// pete
+
 #include <SFML/Graphics.hpp>
 
 
