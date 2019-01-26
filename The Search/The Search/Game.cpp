@@ -82,6 +82,7 @@ void Game::render()
 {
 	m_window.clear();
 	m_player.render(m_window);
+	m_level.render(m_window);
 	title.Draw(m_window);
 	m_window.display();
 }

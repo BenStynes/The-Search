@@ -6,6 +6,7 @@
 #include "Player.h"
 sf::Vector2f const m_GRAVITY = { 0,9.8 };
 #include "MainMenu.h"
+#include "Level.h"
 
 
 class Game
@@ -37,6 +38,8 @@ private:
 
 	controlState currentState;
 	controlState prevoiusState;
+
+	Level m_level;
 
 };
 
