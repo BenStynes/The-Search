@@ -10,6 +10,7 @@ private:
 	bool attacked{false};
 	bool cutscene{false};
 	sf::Vector2f playerSpeed{0,0};
+	sf::Vector2f jumpSpeed{ 0,0 };
 	sf::Sprite player;
 	sf::Texture texture;
 

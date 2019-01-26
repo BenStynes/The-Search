@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "Player.h"
-sf::Vector2f const m_GRAVITY = { 0,9.8 };
 #include "MainMenu.h"
 
 
