@@ -19,6 +19,12 @@ void MainMenu::setupText()
 
 void MainMenu::setupOptionsAndPointers()
 {
+	for (int i = 0; i < MAX_OPTIONS; i++)
+	{
+
+
+
+	}
 }
 
 bool MainMenu::getExisting()
@@ -33,15 +39,18 @@ void MainMenu::setExisting(bool t_understandableHaveANiceDay)
 
 void MainMenu::advanceToNewGame()
 {
-	
+	newGame = true;
 }
 
 void MainMenu::advanceToOptions()
 {
+	options = true;
+
 }
 
 void MainMenu::advanceToExitGame()
 {
+	closeGame = true;
 }
 
 

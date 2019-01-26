@@ -10,7 +10,9 @@ private:
 	sf::Text titleText;
 	sf::CircleShape Pointer;
 	bool existing;
-
+	bool options;
+	bool newGame;
+	bool closeGame;
 
 
 public:
