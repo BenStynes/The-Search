@@ -4,7 +4,9 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
 {
-
+	gameTexture.loadFromFile("IMAGES/hell.png");
+	gameScreen.setTexture(gameTexture);
+	gameScreen.setPosition({ 0,0 });
 }
 
 Game::~Game()
@@ -70,8 +72,15 @@ void Game::processEvents()
 
 void Game::update(sf::Time t_deltaTime)
 {
-	m_player.update();
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		inGame = true;
+		title.setExisting(false);
+	}
+	if (inGame)
+	{
+		m_player.update();
+	}
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -81,8 +90,17 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear();
-	m_player.render(m_window);
-	title.Draw(m_window);
+
+	if (title.getExisting())
+	{
+		title.Draw(m_window);
+	}
+	else if (inGame)
+	{
+		m_player.render(m_window);
+		m_window.draw(gameScreen);
+	}
+
 	m_window.display();
 }
 
