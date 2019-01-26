@@ -5,6 +5,7 @@ class Player
 private:
 	int health{};
 	int blood{};
+
 	sf::Vector2f position{600,400};
 	bool attacked{false};
 	bool cutscene{false};
@@ -22,15 +23,5 @@ public:
 	sf::Vector2f getPosition();
 	void setPosition(sf::Vector2f t_pos);
 	void setPlayerSpeed(sf::Vector2f t_playerSpeed);
-		
-
-
-		
-
-
-
-
-
-
 
 };

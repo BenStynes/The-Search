@@ -4,20 +4,21 @@
 
 #include <SFML/Graphics.hpp>
 #include "Player.h"
-
 sf::Vector2f const m_GRAVITY = { 0,9.8 };
+#include "MainMenu.h"
+
 
 class Game
 {
 public:
 
 	Game();
-	~Game();
-
+	~Game(); 
+	
 	void run();
-
+	
 private:
-
+	MainMenu title;
 	void processEvents();
 	void update(sf::Time t_deltaTime);
 	void render();
@@ -36,6 +37,7 @@ private:
 
 	controlState currentState;
 	controlState prevoiusState;
+
 };
 
 #endif // !GAME
