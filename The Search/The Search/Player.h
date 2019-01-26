@@ -20,7 +20,6 @@ class Player
 		void setPlayerSpeed(int t_playerSpeed);
 		
 
-
 		
 
 
