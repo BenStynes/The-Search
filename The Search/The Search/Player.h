@@ -15,11 +15,9 @@ class Player
 		Player();
 		int getHealth();
 		void setHealth(int t_playerHealth);
-		void playerMovement();
 		int getPlayerSpeed();
 		void setPlayerSpeed(int t_playerSpeed);
 		
-
 
 		
 

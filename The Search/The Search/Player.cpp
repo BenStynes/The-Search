@@ -24,10 +24,6 @@ void Player::setHealth(int t_playerHealth)
 
 }
 
-void Player::playerMovement()
-{
-
-}
 
 int Player::getPlayerSpeed()
 {

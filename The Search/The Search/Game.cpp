@@ -2,11 +2,12 @@
 
 #include "Game.h"
 
+
 Game::Game() :
 	m_window{ sf::VideoMode{ 800u, 600u, 32u }, "Basic Game" },
 	m_exitGame{ false }
 {
-	setupShapes();
+	
 }
 
 Game::~Game()
@@ -16,9 +17,11 @@ Game::~Game()
 
 void Game::run()
 {
+	
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float FPS = 60.0f;
+	title.setupOptionsAndPointers();
 	sf::Time timePerFrame = sf::seconds(1.0f / FPS); // 60 fps
 	while (m_window.isOpen())
 	{
@@ -58,15 +61,8 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_window.draw(m_circle);
-
+	title.Draw(m_window);
 	m_window.display();
 }
 
-void Game::setupShapes()
-{
-	m_circle.setFillColor(sf::Color::Red);
-	m_circle.setRadius(30.0f);
-	m_circle.setPosition(400.0f, 300.0f);
-}
 
