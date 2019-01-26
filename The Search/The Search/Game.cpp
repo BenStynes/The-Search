@@ -61,15 +61,8 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_window.draw(m_circle);
 	title.Draw(m_window);
 	m_window.display();
 }
 
-void Game::setupShapes()
-{
-	m_circle.setFillColor(sf::Color::Red);
-	m_circle.setRadius(30.0f);
-	m_circle.setPosition(400.0f, 300.0f);
-}
 
