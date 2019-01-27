@@ -33,5 +33,6 @@ public:
 	bool getNewGame();
 	bool getOptionsMenu();
 	bool getExitGame();
+	void returnToMainMenu();
 };
 

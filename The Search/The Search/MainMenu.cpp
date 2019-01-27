@@ -11,7 +11,7 @@ MainMenu::MainMenu()
 
 void MainMenu::setupText()
 {
-	overallText.loadFromFile("polla.ttf");
+	overallText.loadFromFile("PinkBazooka.ttf");
 	titleText.setFont(overallText);
 	titleText.setFillColor(sf::Color::Red);
 	titleText.setCharacterSize(76);
@@ -31,7 +31,7 @@ void MainMenu::setupText()
 			break;
 		case 1:
 			menuText[i].setPosition({ 400.0f,450.0f });
-			menuText[i].setString("Options");
+			menuText[i].setString("How to Play");
 			
 			break;
 		case 2:
@@ -147,4 +147,11 @@ bool MainMenu::getOptionsMenu()
 bool MainMenu::getExitGame()
 {
 	return closeGame;
+}
+void MainMenu::returnToMainMenu()
+{
+	if (newGame == false)
+	{
+		existing = true;
+	}
 }

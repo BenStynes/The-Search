@@ -17,6 +17,7 @@ void Game::run()
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float FPS = 60.0f;
+	howToPlay.setupText();
 	title.setupText();
 	title.setupOptionsAndPointers();
 	sf::Time timePerFrame = sf::seconds(1.0f / FPS); // 60 fps
@@ -73,6 +74,11 @@ void Game::processEvents()
 				title.advanceToOptions();
 			    title.exitGame();
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+		{
+			
+			title.returnToMainMenu();
+		}
 		if (m_player.getPosition().y >= 400)
 		{
 			m_player.setPosition({ m_player.getPosition().x, 400.0f });
@@ -103,8 +109,10 @@ void Game::render()
 	{
 		m_player.render(m_window);
 	}
-	if (title.getExisting() == false && title.getOptionsMenu() == true )
-	{ }
+	if (title.getExisting() == false && title.getOptionsMenu() == true && howToPlay.getExisting()==true)
+	{
+		howToPlay.Draw(m_window);
+	}
 	m_window.display();
 }
 
