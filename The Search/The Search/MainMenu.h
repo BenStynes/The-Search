@@ -30,6 +30,8 @@ public:
 	void exitGame();
 	void movePointer();
 	void Draw(sf::RenderWindow & t_window);
-
+	bool getNewGame();
+	bool getOptionsMenu();
+	bool getExitGame();
 };
 

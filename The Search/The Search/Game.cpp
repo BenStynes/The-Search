@@ -44,7 +44,7 @@ void Game::processEvents()
 
 
 		
-		if (sf::Event::Closed == nextEvent.type) // check if the close window button is clicked on.
+		if (sf::Event::Closed == nextEvent.type || title.getExitGame() == true) // check if the close window button is clicked on.
 		{
 			m_window.close();
 		}
@@ -68,8 +68,10 @@ void Game::processEvents()
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
-			title.advanceToNewGame();
-
+			
+				title.advanceToNewGame();
+				title.advanceToOptions();
+			    title.exitGame();
 		}
 		if (m_player.getPosition().y >= 400)
 		{
@@ -84,7 +86,7 @@ void Game::update(sf::Time t_deltaTime)
 {
 	m_player.update();
 
-	if (m_exitGame)
+	if (m_exitGame )
 	{
 		m_window.close();
 	}
@@ -97,10 +99,12 @@ void Game::render()
 	{
 		title.Draw(m_window);
 	}
-	if (title.getExisting() == false)
+	if (title.getExisting() == false && title.getNewGame()== true)
 	{
 		m_player.render(m_window);
 	}
+	if (title.getExisting() == false && title.getOptionsMenu() == true )
+	{ }
 	m_window.display();
 }
 

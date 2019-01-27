@@ -32,7 +32,7 @@ void MainMenu::setupText()
 		case 1:
 			menuText[i].setPosition({ 400.0f,450.0f });
 			menuText[i].setString("Options");
-
+			
 			break;
 		case 2:
 			menuText[i].setPosition({ 400.0f,600.0f });
@@ -40,6 +40,8 @@ void MainMenu::setupText()
 
 			break;
 		}
+
+	
 	}
 
 
@@ -66,20 +68,31 @@ void MainMenu::setExisting(bool t_showing)
 
 void MainMenu::advanceToNewGame()
 {
-	newGame = true;
-	existing = false;
+	if (optionSelector.getPosition().y == 300.f)
+	{
+		newGame = true;
+		existing = false;
+		
+	}
 }
 
 void MainMenu::advanceToOptions()
 {
-	optionsMenu = true;
-	existing = false;
+
+	if (optionSelector.getPosition().y == 450.f)
+	{
+		optionsMenu = true;
+		existing = false;
+	}
 }
 
-void MainMenu::exitGame()
+void  MainMenu::exitGame()
 {
-	closeGame = true;
-	existing = false;
+	if(optionSelector.getPosition().y == 600.f)
+	{
+		closeGame = true;
+		existing = false;
+	}
 }
 void MainMenu::movePointer()
 {
@@ -119,4 +132,19 @@ void MainMenu::Draw(sf::RenderWindow &t_window)
 		t_window.draw(menuText[i]);
 		t_window.draw(options[i]);
 	}
+}
+
+bool MainMenu::getNewGame()
+{
+	return newGame;
+}
+
+bool MainMenu::getOptionsMenu()
+{
+	return optionsMenu;
+}
+
+bool MainMenu::getExitGame()
+{
+	return closeGame;
 }
