@@ -27,6 +27,8 @@ private:
 	sf::RenderWindow m_window;
 	bool m_exitGame;
 
+	bool inGame = false;
+
 	Player m_player;
 	struct controlState
 	{
@@ -38,6 +40,9 @@ private:
 
 	controlState currentState;
 	controlState prevoiusState;
+
+	sf::Sprite gameScreen;
+	sf::Texture gameTexture;
 
 };
 

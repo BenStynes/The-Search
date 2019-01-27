@@ -1,10 +1,14 @@
 #include "Game.h"
 
+
+
 Game::Game() :
 	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
 {
-
+	gameTexture.loadFromFile("IMAGES/hell.png");
+	gameScreen.setTexture(gameTexture);
+	gameScreen.setPosition({ 0,0 });
 }
 
 Game::~Game()
@@ -49,6 +53,7 @@ void Game::processEvents()
 		{
 			m_window.close();
 		}
+
 		if (m_player.getPosition().y < 400)
 		{
 			m_player.setPlayerSpeed(m_GRAVITY);
@@ -84,7 +89,6 @@ void Game::processEvents()
 			m_player.setPosition({ m_player.getPosition().x, 400.0f });
 			currentState.Space = false;
 		}
-		
 	}
 }
 
@@ -101,6 +105,7 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear();
+  
 	if (title.getExisting() == true)
 	{
 		title.Draw(m_window);
@@ -113,6 +118,7 @@ void Game::render()
 	{
 		howToPlay.Draw(m_window);
 	}
+
 	m_window.display();
 }
 

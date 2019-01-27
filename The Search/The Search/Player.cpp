@@ -1,5 +1,7 @@
 #include "Player.h"
 
+sf::Vector2f const m_GRAVITY = { 0.0f,9.8f };
+
 Player::Player()
 {
 
@@ -18,15 +20,45 @@ Player::Player()
 
 void Player::update()
 {
+	if (position.y < 400)
+	{
+		position += m_GRAVITY;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		playerSpeed = { -5.0f,0.0f };
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		playerSpeed = { 5.0f,0.0f };
+	}
+	else
+	{
+		playerSpeed = { 0,0 };
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		jumpSpeed = { 0.0f,-50.0f };
+	}
+	else if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		jumpSpeed = { 0,0 };
+	}
+	if (position.y >= 400)
+	{
+		position = { position.x, 400.0f };
+	}
 	if (position.y <= 400)
- 	{
-		position.y += playerSpeed.y;
+	{
+		position.y += jumpSpeed.y;
 	}
 	if (position.x >= 0 || position.x <= 1200)
 	{
 		position.x += playerSpeed.x;
 	}
 	player.setPosition(position);
+
 }
 
 void Player::render(sf::RenderWindow & t_window)
