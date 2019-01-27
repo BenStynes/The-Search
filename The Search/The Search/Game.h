@@ -6,7 +6,8 @@
 #include "Player.h"
 #include "MainMenu.h"
 #include "Enemy.h"
-
+#include "OptionsMenu.h"
+const sf::Vector2f  m_GRAVITY = { 0.0f,9.8f };
 
 class Game
 {
@@ -19,6 +20,7 @@ public:
 	
 private:
 	MainMenu title;
+	OptionsMenu howToPlay;
 	void processEvents();
 	void update(sf::Time t_deltaTime);
 	void render();
