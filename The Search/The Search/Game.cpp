@@ -6,15 +6,11 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 1200, 800, 32 }, "Basic Game" },
 	m_exitGame{ false }
 {
-	gameTexture.loadFromFile("IMAGES/hell.png");
+	gameTexture.loadFromFile("IMAGES/BackGround.png");
 	gameScreen.setTexture(gameTexture);
 	gameScreen.setPosition({ 0,0 });
 	title.setupAudio();
 	title.playMenuAudio();
-
-	
-
-	
 }
 
 Game::~Game()
@@ -45,7 +41,6 @@ void Game::run()
 		render(); // Run as many times as possible
 	}
 }
-
 void Game::processEvents()
 {
 
@@ -106,12 +101,21 @@ void Game::processEvents()
 
 void Game::update(sf::Time t_deltaTime)
 {
-
-	m_player.update();
-	if (m_exitGame )
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		inGame = true;
+		title.setExisting(false);
+	}
+	if (inGame)
+	{
+		m_player.update();
+	}
+	if (m_exitGame)
 	{
 		m_window.close();
 	}
+
+	m_enemy.update(m_player.getPosition());
 }
 
 void Game::render()
@@ -124,6 +128,7 @@ void Game::render()
 	}
 	if (title.getExisting() == false && title.getNewGame()== true)
 	{
+		m_window.draw(gameScreen);
 		m_player.render(m_window);
 	}
 	if (title.getExisting() == false && title.getOptionsMenu() == true && howToPlay.getExisting()==true)

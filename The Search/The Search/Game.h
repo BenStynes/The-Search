@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "MainMenu.h"
+#include "Enemy.h"
 #include "OptionsMenu.h"
 const sf::Vector2f  m_GRAVITY = { 0.0f,9.8f };
 
@@ -30,6 +31,8 @@ private:
 	bool inGame = false;
 
 	Player m_player;
+	Enemy m_enemy;
+
 	struct controlState
 	{
 		bool Left = false;
