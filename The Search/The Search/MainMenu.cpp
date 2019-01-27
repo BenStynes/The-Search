@@ -72,7 +72,9 @@ void MainMenu::advanceToNewGame()
 	{
 		newGame = true;
 		existing = false;
-		
+		menuMusic.stop();
+		gameplayAudio();
+
 	}
 }
 
@@ -120,7 +122,29 @@ void MainMenu::movePointer()
 			}
 			
 		}
-		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			switch (optionCounterDown)
+			{
+			default:
+				optionCounterDown = 2;
+				optionSelector.setPosition(optionSelector.getPosition().x, menuText[optionCounterDown].getPosition().y);
+				break;
+			case 0:
+				optionSelector.setPosition(optionSelector.getPosition().x, menuText[optionCounterDown].getPosition().y);
+				optionCounterDown--;
+				break;
+			case 1:
+				optionSelector.setPosition(optionSelector.getPosition().x, menuText[optionCounterDown].getPosition().y);
+				optionCounterDown--;
+				break;
+			case 2:
+				optionSelector.setPosition(optionSelector.getPosition().x, menuText[optionCounterDown].getPosition().y);
+				optionCounterDown--;
+				break;
+			}
+
+		}
 	
 }
 void MainMenu::Draw(sf::RenderWindow &t_window)
@@ -137,6 +161,7 @@ void MainMenu::Draw(sf::RenderWindow &t_window)
 bool MainMenu::getNewGame()
 {
 	return newGame;
+
 }
 
 bool MainMenu::getOptionsMenu()
@@ -154,4 +179,25 @@ void MainMenu::returnToMainMenu()
 	{
 		existing = true;
 	}
+	
 }
+
+void MainMenu::setupAudio()
+{
+	menuMusic.openFromFile("Audio/Music/Soulful Mix_01.ogg");
+	menuMusic.setLoop(true);
+	gameMusic.openFromFile("Audio/Music/Viennese Fiction Extended.ogg");
+	gameMusic.setLoop(true);
+}
+
+void MainMenu::playMenuAudio()
+{
+	menuMusic.play();
+}
+
+void MainMenu::gameplayAudio()
+{
+	gameMusic.play();
+}
+
+

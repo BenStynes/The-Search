@@ -1,11 +1,16 @@
 
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 int const MAX_OPTIONS = 3;
 
 class MainMenu
 {
 private:
+	sf::Music menuMusic;
+	sf::Music gameMusic;
+	sf::Music endMusic;
 
 	sf::RectangleShape options[MAX_OPTIONS] ;
 	sf::Text menuText[MAX_OPTIONS];
@@ -34,5 +39,9 @@ public:
 	bool getOptionsMenu();
 	bool getExitGame();
 	void returnToMainMenu();
+	void setupAudio();
+	void playMenuAudio();
+	void gameplayAudio();
+
 };
 
