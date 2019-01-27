@@ -130,6 +130,7 @@ void Game::render()
 	{
 		m_window.draw(gameScreen);
 		m_player.render(m_window);
+		m_enemy.render(m_window);
 	}
 	if (title.getExisting() == false && title.getOptionsMenu() == true && howToPlay.getExisting()==true)
 	{

@@ -43,7 +43,7 @@ void Player::update()
 		if (previousState != true && jumpSpeed.y > -1)
 		{
 			currentState = true;
-			jumpSpeed = { 0.0f,-50.0f };
+			jumpSpeed = { 0.0f,-25.0f };
 			position.y += -1.0f;
 		}
 	}
